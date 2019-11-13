@@ -1,0 +1,23 @@
+Here are the instructions for Project deliverable #3.
+The due date has been changed to:  Sunday 11/17/2019
+
+You will submit through Sakai, one submission per group.
+The link in Assignments to submit deliverable #3 will be created after reviewing all the group data submitted in deliverable #2.
+
+
+Assignment Instructions
+
+For this assignment you should develop a web application for:
+1. creating an account with login name and password (just normal users/customers). This information should be stored in your database.  
+2. logging in to an already created account. This information should be accessed from your database.  
+3. logging out
+
+The idea is that these are very simple jsp pages - we just want to make sure that each team has created an AWS account with a MySQL RDS instance and everyone has understood how to use jsp, JDBC, mySQL etc to do something simple (see sakai>Project Files for useful instructions (everything that was discussed during recitations) ).
+
+<1> Please submit, in the form of a ZIP file, the web application (all the folder from eclipse) you have created that lets a user to create an account and log in, logout from the system.
+
+<2> Please submit as text the URL of the start page of the project where we can access your web application. In order to do so you will have to create an AWS EC2 instance. Please check the Amazon_EC2.pdf file that exists under the Project Files.
+
+<3> A .sql file with your database schema as exported from MySQLWorkbench.
+
+Good luck!
