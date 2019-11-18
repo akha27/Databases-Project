@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Registration</title>
 </head>
 <body>
 
@@ -19,23 +19,25 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			
-			String getUser = "SELECT * FROM USERS";
+			String insertUser = "INSERT INTO Users(userId, login, password)"
+					+ "VALUES (?, ?, ?)";
 			
 			//from logIn.jsp
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
+			String newUsername = request.getParameter("registerUsername");
+			String newPassword = request.getParameter("registerPassword");
+						
+		
+			PreparedStatement ps = con.prepareStatement(insertUser);
 			
-			ResultSet result = stmt.executeQuery(getUser);
+			ps.setString(1, newUsername);
+			ps.setString(2, newPassword);
 			
-			// get result from query into table		
-			//PreparedStatement ps = con.prepareStatement(getUser);
-			
-			while (result.next()) {
-				if(result.getString(1).equals(username) && result.getString(2).equals(password)) {
-					out.print("Log in Successfull");
-				}
-				
-			}
+			ps.executeUpdate();
+
+			con.close();
+
+			out.print("User Registred");
+
 
 		} catch (Exception e) {
 			out.print(e);

@@ -27,7 +27,7 @@
 
 <br>
 
-	<form method="post" action="registerCustomer.jsp">
+	<form method="post" action="RegisterCustomer.jsp">
 	<table>
 	<tr>
 	<td>If you don't have an account, press Register</td>
