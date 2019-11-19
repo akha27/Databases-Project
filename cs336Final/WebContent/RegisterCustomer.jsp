@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +8,6 @@
 <body>
 
 <br>
-
 	<form method="post" action="AuthenticateRegistration.jsp">
 	<table>
 	<tr>
@@ -29,9 +27,9 @@
 <form method="post" action="LogIn.jsp">
 	<table>
 	<tr>
-	<td>Return to Log In</td>
+	<td>Return to Log In Page</td>
 	</table>
-	<input type="submit" value="Log-in">
+	<input type="submit" value="Return">
 	</form>
 
 </body>

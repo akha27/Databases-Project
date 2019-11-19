@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html>
@@ -10,23 +9,36 @@
 </head>
 <body>
 
-<br>
-
+	<%
+	    if ((session.getAttribute("uName")==null)) {
+	%>
+	You are not logged in<br/>
+	<br>
 	<form method="post" action="AuthenticateLogIn.jsp">
-	<table>
-	<tr>
-	<td>Log in</td>
-	</tr>
-	<tr>
-	<td>User Name:</td><td><input type="text" name="username"></td>
-	</tr>
-	<tr>
-	<td>Password:</td><td><input type="password" name="password"></td>
-	</tr>
-	</table>
+		<table>
+			<tr>
+			<td>Log in</td>
+			</tr>
+			<tr>
+			<td>User Name:</td><td><input type="text" name="username"></td>
+			</tr>
+			<tr>
+			<td>Password:</td><td><input type="password" name="password"></td>
+			</tr>
+		</table>
 	<input type="submit" value="Login">
 	</form>
-<br>
+    <br>
+	
+	<%} else {
+	%>
+	 <%=session.getAttribute("uName")%>, You are already logged in!
+	<form method="post" action="LogOut.jsp">
+	<input type="submit" value="Logout">
+	</form>
+	<%
+	    }
+	%>
 
 <br>
 

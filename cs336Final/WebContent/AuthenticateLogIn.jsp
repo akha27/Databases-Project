@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@ page import="com.cs336.pkg.ApplicationDB" %>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +38,7 @@ try {
 				
 				if(result.getString(1).equals(username) && result.getString(2).equals(password)) {
 					out.print("Log in Successfull");
+					session.setAttribute("uName", username);
 					loginStatus = true;
 					break;
 				} else {
@@ -65,7 +63,7 @@ try {
 	<tr>
 	<td><br>Return to Log-in Page</td>
 	</table>
-	<input type="submit" value="Log-in">
+	<input type="submit" value="Return">
 	</form>
 	
 		<form method="post" action="RegisterCustomer.jsp">
