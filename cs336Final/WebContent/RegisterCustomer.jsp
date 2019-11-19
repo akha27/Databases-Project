@@ -23,15 +23,15 @@
 	</tr>
 	</table>
 	<input type="submit" value="Register">
-	</form>
+	</form>	
 <br>
 
-<form method="post" action="logIn.jsp">
+<form method="post" action="LogIn.jsp">
 	<table>
 	<tr>
 	<td>Return to Log In</td>
 	</table>
-	<input type="submit" value="Register">
+	<input type="submit" value="Log-in">
 	</form>
 
 </body>

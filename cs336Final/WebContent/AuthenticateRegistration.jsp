@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@ page import="com.cs336.pkg.ApplicationDB" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +12,20 @@
 </head>
 <body>
 
-<% try {
-	
+<% 
+ boolean registrationStatus = false;
+
+
+try {
 			//Get the database connection
 			ApplicationDB db = new ApplicationDB();	
-			Connection con = db.getConnection();		
-
+			Connection con = db.getConnection();
+			
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			
-			String insertUser = "INSERT INTO Users(userId, login, password)"
+			
+			String insertUser = "INSERT INTO Person(user_name, password, person_name)"
 					+ "VALUES (?, ?, ?)";
 			
 			//from logIn.jsp
@@ -31,18 +37,42 @@
 			
 			ps.setString(1, newUsername);
 			ps.setString(2, newPassword);
+			ps.setString(3, "test");
+			
+			registrationStatus = true;
+
 			
 			ps.executeUpdate();
 
 			con.close();
+			
+			out.print("Registration SUCCESSFUL");
 
-			out.print("User Registred");
-
+			
 
 		} catch (Exception e) {
+			out.print("Registration UNSUCCESSFUL<br>");
 			out.print(e);
 		}
 	%>
+		
+	<form method="post" action="RegisterCustomer.jsp">
+	<table>
+	<tr>
+	<td><br>Press here to register another user<br></td>
+	</table>
+	<input type="submit" value="Register">
+	</form>
+	
+	<form method="post" action="LogIn.jsp">
+	<table>
+	<tr>
+	<td>Return to Log In</td>
+	</table>
+	<input type="submit" value="Log-in">
+	</form>
+		
+	
 
 </body>
 </html>

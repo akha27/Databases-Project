@@ -15,6 +15,9 @@
 	<form method="post" action="AuthenticateLogIn.jsp">
 	<table>
 	<tr>
+	<td>Log in</td>
+	</tr>
+	<tr>
 	<td>User Name:</td><td><input type="text" name="username"></td>
 	</tr>
 	<tr>
