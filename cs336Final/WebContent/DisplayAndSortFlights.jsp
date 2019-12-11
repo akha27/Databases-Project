@@ -42,13 +42,14 @@ try {
 
 
 			
+	
 			/* String sort = "";
-			//if(request.getParameter("sortPrice").equals(lowToHigh))
-			//	sort = " ORDER BY price";
-		/*  >	else if(request.getParameter("sortPrice").equals(highToLow))*/
-			//	sort = " ORDER BY price DESC";
+			if(request.getParameter("sortPrice").equals("lowToHigh"))
+				sort = " ORDER BY price";
+			else if(request.getParameter("sortPrice").equals("highToLow"))
+				sort = " ORDER BY price DESC"; */
 			
-			String getFlights = "SELECT *" +
+			/* String getFlights = "SELECT Flight_flight_number, departs.airport_id, dept_time, arrives.airport_id, stops, price" +
 								" FROM departs JOIN arrives JOIN Flight" +
 								" ON departs.airline_id = arrives.airline_id" +
 								" AND arrives.airline_id = Flight.airline_id" +
@@ -56,13 +57,22 @@ try {
 								" AND arrives.flight_number = Flight.flight_number" +
 								" WHERE arrives.airport_id =\"" + toCity + "\""+
 								" AND departs.airport_id = \"" + fromCity + "\"";
-							//	+ " sort";
+							//	+ " sort"; */
+							
+								String getFlights = "SELECT *" +
+								" FROM departs JOIN arrives JOIN Flight" +
+								" ON departs.airline_id = arrives.airline_id" +
+								" AND arrives.airline_id = Flight.airline_id" +
+								" AND departs.flight_number = arrives.flight_number" +
+								" AND arrives.flight_number = Flight.flight_number" +
+								" WHERE arrives.airport_id =\"" + toCity + "\""+
+								" AND departs.airport_id = \"" + fromCity + "\"";
 			
 			ResultSet result = stmt.executeQuery(getFlights);
 			
 
 			
-			%>
+			%>s
 
 		<h2>Sort it:</h2>
 
@@ -114,9 +124,6 @@ try {
   					<%
   					if(result.next()){
   						result.beforeFirst();
-  						
-  						
-  					
   					
   					while (result.next()) {%>
   					 <tbody>
