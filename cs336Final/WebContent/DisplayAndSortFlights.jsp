@@ -34,6 +34,11 @@ try {
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			
+			String sort = "";
+			if(request.getParameter("sortPrice").equals(lotToHigh))
+				sort = " ORDER BY price";
+			else if(request.getParameter("sortPrice").equals(lotToHigh))
+				sort = " ORDER BY price DESC";
 			
 			String getFlights = "SELECT *" +
 								" FROM departs JOIN arrives JOIN Flight" +
@@ -43,7 +48,7 @@ try {
 								" AND arrives.flight_number = Flight.flight_number" +
 								" WHERE arrives.airport_id = var_destination " +
 								" AND departs.airport_id = var_origin " +
-								" ORDER BY dept_time";
+								" sort;
 			
 			ResultSet result = stmt.executeQuery(getFlights);
 
