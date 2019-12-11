@@ -23,21 +23,23 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 
-			String getUser = "SELECT * FROM Admin";
+			String getAdmin = "SELECT * FROM Admin NATURAL JOIN Person";
 
 			//from logIn.jsp
 			String username = request.getParameter("usernameAdmin");
 			String password = request.getParameter("passwordAdmin");
 
-			ResultSet result = stmt.executeQuery(getUser);
-
+			ResultSet result = stmt.executeQuery(getAdmin);
+			
+			
 			while (result.next()) {
 
-				if (result.getString(1).equals(username) && result.getString(2).equals(password)) {
+				if (result.getString(1).equals(username)  && result.getString(2).equals(password )) {
 					out.print("Log in Successful");
-					out.print("You are an admin, don't break anything!");
 					session.setAttribute("uName", username);
 					adminLoginStatus = true;
+					String redirectURL = "AdminControls.jsp";
+					response.sendRedirect(redirectURL); 
 					break;
 				} else {
 					adminLoginStatus = false;
@@ -57,72 +59,11 @@
 		}
 	%>
 	
-	<%if (adminLoginStatus == true) {  %>
-	<form method="post" action="LogOut.jsp">
-		<input type="submit" value="Log out">
-	</form> 
-
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Edit Customer or Representative"></td>
-			</tr>
-		</table>
-	</form>
-
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Get a sales report"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Generate revenue listings"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Top-revenue Customer"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Most Active Flights"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Flights per Airport"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<%} else {%>
-	
+	<%if (adminLoginStatus == false) {  %>
 	<form method="post" action="LogOut.jsp">
 		<input type="submit" value="Return to log in page">
 	</form> 
-	
-	<%} %>
+	<%}%>
 	
 	<%-- <%
 		if (isAdmin) {

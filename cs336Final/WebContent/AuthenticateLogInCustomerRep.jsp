@@ -24,7 +24,7 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 
-			String getUser = "SELECT * FROM Customer_Rep";
+			String getUser = "SELECT * FROM Customer_Rep NATURAL JOIN Person";
 
 			//from logIn.jsp
 			String username = request.getParameter("usernameRep");
@@ -33,17 +33,15 @@
 			ResultSet result = stmt.executeQuery(getUser);
 
 			while (result.next()) {
-				//testing purposes
-				/* System.out.println(result.getString(1) + "\t" + result.getString(2));
-				System.out.println(username + "\t" + password); */
 
 				if (result.getString(1).equals(username) && result.getString(2).equals(password)) {
 					out.print("Log in Successful");
 					session.setAttribute("uName", username);
 					repLogInStatus = true;
+					String redirectURL = "CustomerRepControls.jsp";
+					response.sendRedirect(redirectURL); 
 					break;
 				} else {
-					//out.print("Log in Failed<br>");
 					repLogInStatus = false;
 				}
 			}
@@ -62,65 +60,13 @@
 	
 
 
-<%if (repLogInStatus == true) {  %>
+<%if (repLogInStatus == false) {  %>
 
-	<form method="post" action="UserReservations.jsp">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Press here to Look at your Reservations"></td>
-			</tr>
-		</table>
-	</form>
-
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="MAKE flight reservation for a user"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="EDIT flight reservation for a user"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="MODIFY flight information"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="RETRIEVE waiting list for a flight"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<form method="post" action="LogOut.jsp">
-		<input type="submit" value="Log out">
-	</form> 
-	<%} else {%>
-	
-	<form method="post" action="LogOut.jsp">
+<form method="post" action="LogOut.jsp">
 		<input type="submit" value="Return to log in page">
 	</form> 
-	
-	<%} %>
 
-
+	<%}%>
 
 </body>
 </html>

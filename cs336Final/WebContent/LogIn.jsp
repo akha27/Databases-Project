@@ -91,8 +91,8 @@
 		<input type="submit" value="Logout">
 	</form>
 
-	Go to the menu!
-	<form method="post" action="AuthenticateLogIn.jsp">
+	Go to the user menu!
+	<form method="post" action="UserControls.jsp">
 		<input type="submit" value="Menu">
 	</form>
 	<%

@@ -15,6 +15,18 @@ th, td {
   padding: 5px;
   text-align: left;    
 }
+
+.rightLogout {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+.rightUserControls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 </style>
 <meta charset="UTF-8">
 <title>Flights</title>
@@ -163,9 +175,17 @@ try {
 
 
 
-		
-
-
+ <div class= "rightLogout">
+		<form method="post" action="LogOut.jsp">
+			<input type="submit" value="Log out">
+		</form> 
+     </div>
+     
+     <div class= "rightUserControls">
+		<form method="post" action="UserControls.jsp">
+			<input type="submit" value="Return to User Controls">
+		</form> 
+     </div>
 
 </body>
 </html>

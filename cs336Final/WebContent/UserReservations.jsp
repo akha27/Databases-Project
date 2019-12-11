@@ -13,6 +13,18 @@ th, td {
   padding: 5px;
   text-align: left;    
 }
+
+.rightLogout {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+.rightUserControls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 </style>
 <title>Your Reservations</title>
 </head>
@@ -80,9 +92,17 @@ th, td {
   						</tr>
 					</table>
 			</form>
+	 <div class= "rightLogout">
+		<form method="post" action="LogOut.jsp">
+			<input type="submit" value="Log out">
+		</form> 
+     </div>
+     
+     <div class= "rightUserControls">
+		<form method="post" action="UserControls.jsp">
+			<input type="submit" value="Return to User Controls">
+		</form> 
+     </div>	
 		
-		
-
-
 </body>
 </html>

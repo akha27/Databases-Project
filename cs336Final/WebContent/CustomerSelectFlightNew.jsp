@@ -6,12 +6,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+<style>
+.rightLogout {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+.rightUserControls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+</style>
 <meta charset="UTF-8">
 <title>Search for trips</title>
 </head>
 <body>
 
 <!-- INFO: This is the screen that sends a query for flights. The output is meant to be displayed on the next screen. -->
+
+<%
+		if ((session.getAttribute("uName") == null)) {
+		out.print("null");
+		}
+	%>
+     
 	
 	<form method="post" action = DisplayAndSortFlights.jsp>  						
 		<table>
@@ -80,14 +102,22 @@
 				<td><input type="submit" value="submit"></td>
 			</tr>
 			
-			
-			
 		</table>
-		</form>		
-		
-	
+		</form>	
 		
 		
+		 <div class= "rightLogout">
+		<form method="post" action="LogOut.jsp">
+			<input type="submit" value="Log out">
+		</form> 
+     </div>
+     
+     <div class= "rightUserControls">
+		<form method="post" action="UserControls.jsp">
+			<input type="submit" value="Return to User Controls">
+		</form> 
+     </div>	
+			
 
 </body>
 </html>

@@ -6,6 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.rightLogout {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+</style>
 <meta charset="UTF-8">
 <title>Logged In</title>
 </head>
@@ -32,17 +39,15 @@
 			ResultSet result = stmt.executeQuery(getUser);
 
 			while (result.next()) {
-				//testing purposes
-				/* System.out.println(result.getString(1) + "\t" + result.getString(2));
-				System.out.println(username + "\t" + password); */
 
 				if (result.getString(1).equals(username) && result.getString(2).equals(password)) {
 					out.print("Log in Successful");
 					session.setAttribute("uName", username);
 					loginStatus = true;
+					String redirectURL = "UserControls.jsp";
+					response.sendRedirect(redirectURL);
 					break;
 				} else {
-					//out.print("Log in Failed<br>");
 					loginStatus = false;
 				}
 			}
@@ -59,35 +64,10 @@
 		}
 	%>
 	
-	<%if (loginStatus == true) {  %>
-	
-	<form method="post" action="LogOut.jsp">
-		<input type="submit" value="Log out">
-	</form> 
-
-	<form method="post" action="UserReservations.jsp">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Press here to Look at your Reservations"></td>
-			</tr>
-		</table>
-	</form>
-
-	<form method="post" action="CustomerSelectFlightNew.jsp">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Press here to Look for a flight"></td>
-			</tr>
-		</table>
-	</form>
-	
-	<%} else {%>
-	
-	<form method="post" action="LogOut.jsp">
-		<input type="submit" value="Return to log in page">
-	</form> 
+	<%if (loginStatus == false) {  %>
+		<form method="post" action="LogOut.jsp">
+			<input type="submit" value="Return to log in page">
+		</form> 	<%} else {%>
 	
 	<%} %>
 </body>
