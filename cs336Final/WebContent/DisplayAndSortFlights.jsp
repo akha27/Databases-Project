@@ -137,7 +137,12 @@ try {
   					 <tbody>
   					
   						<tr>
-  						    <td name ="airlineId"><%out.print(result.getString("arrives.airline_id")); %></td>
+  						    <td id ="airlineId">
+  						     <input type="text" id="airlineId2" name="airlineId3" readonly value="<%out.print(result.getString("arrives.airline_id")); %>"/>
+  						    
+  						     
+  						    
+  						    </td>
     						<td colspan="2" id="fNid"><%out.print(result.getString("arrives.flight_number")); %></td>
     						<td colspan="3"><%out.print(result.getString("departs.airport_id")); %></td>
    							<td colspan="4"><%out.print(result.getString("dept_time")); %></td>

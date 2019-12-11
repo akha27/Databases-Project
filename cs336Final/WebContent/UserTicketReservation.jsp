@@ -8,7 +8,7 @@
 </head>
 <body>
 
-			<%String airlineId = request.getParameter("airlineId"); %>
+			<%String airlineId = request.getParameter("airlineId3"); %>
 
 
 
