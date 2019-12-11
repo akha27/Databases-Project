@@ -60,7 +60,41 @@ try {
 		}
 %>
 
-<h2>Here are available flights:</h2>
+
+
+		<h2>Sort it:</h2>
+
+		<form method="post" action ="TODO: re-sort flights">  						
+		<table style="margin:50 px;">
+			<tr>
+				<td> 		
+					<select name="sortPrice" class="choose">
+					<option value="lotToHigh" selected>I'm feeling poor</option>
+					<option value="highToLow">I'm feeling rich</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td> 		
+					<select name="sortStops" class="choose">
+						<option value="moreThanThree"> more than 3</option>
+						<option value="lessThanThree"> less than 3 </option>
+					</select>
+						
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="sort"></td>
+			</tr>
+		</table>
+		</form>	
+		
+		<br>
+		
+		<h2>Here are available flights:</h2>
+		<br>
+
 
 			<form action="" method="POST">
 					<table style="width:100%">

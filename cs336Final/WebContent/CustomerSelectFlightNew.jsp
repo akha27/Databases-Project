@@ -52,8 +52,35 @@
 			</tr>
 			
 			<tr>
+				<td>Optional Filters</td>
+				<td>
+					<select name="filterPrice" class="choose">
+						<option value="cheaperThan300">Cheaper than $300</option>
+						<option value="cheaperThan600">Cheaper than $600</option>
+						<option value="cheaperThan1000">Cheaper than $1000</option>
+					</select>
+				</td>
+				<td>
+				<select name="filterTakeOff" class="choose">
+						<option value="AM">Depart AM</option>
+						<option value="PM">Depart PM</option>
+					</select>
+				</td>
+				
+				<td>
+				<select name="filterLanding" class="choose">
+						<option value="AM">Depart AM</option>
+						<option value="PM">Depart PM</option>
+					</select>
+				</td>
+				
+			</tr>
+			
+			<tr>
 				<td><input type="submit" value="submit"></td>
 			</tr>
+			
+			
 			
 		</table>
 		</form>		
