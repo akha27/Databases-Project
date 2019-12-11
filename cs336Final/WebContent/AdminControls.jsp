@@ -63,8 +63,7 @@
 		</table>
 	</form>
 	
-	<!--  <form method="get" action="Reports/MostActiveFlights.jsp">  -->
-	<form method="post" action="TODO">
+	<form method="get" action="Reports/MostActiveFlights.jsp">
 		<table>
 			<tr>
 				<td><br>
