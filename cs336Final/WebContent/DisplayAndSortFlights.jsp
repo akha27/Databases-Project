@@ -109,6 +109,8 @@ try {
    							<td colspan="6">4:69 pm</td>
     						<td colspan="7">2</td>
    							<td colspan="8">$31</td>
+   							<td colspan="9"><input type="submit" value="RESERVE">></td>
+   							
   						</tr>
 					</table>
 			</form>
