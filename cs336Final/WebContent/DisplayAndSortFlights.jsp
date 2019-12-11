@@ -35,12 +35,12 @@ try {
 			Statement stmt = con.createStatement();
 			
 			String sort = "";
-			if(request.getParameter("sortPrice").equals(lotToHigh))
+			if(request.getParameter("sortPrice").equals("lotToHigh"))
 				sort = " ORDER BY price";
-			else if(request.getParameter("sortPrice").equals(lotToHigh))
+			else if(request.getParameter("sortPrice").equals("highToLow"))
 				sort = " ORDER BY price DESC";
 			
-			String getFlights = "SELECT *" +
+			String getFlights = "SELECT flight_number, departs.airport_id, dept_time, arrives.airport_id, stops, price" +
 								" FROM departs JOIN arrives JOIN Flight" +
 								" ON departs.airline_id = arrives.airline_id" +
 								" AND arrives.airline_id = Flight.airline_id" +
