@@ -137,13 +137,12 @@ try {
   					 <tbody>
   					
   						<tr>
-  						    <td id ="airlineId">
-  						     <input type="text" id="airlineId2" name="airlineId3" readonly value="<%out.print(result.getString("arrives.airline_id")); %>"/>
-  						    
-  						     
-  						    
+  						    <td>
+  						     <input type="text" name="airlineId3" readonly value="<%out.print(result.getString("arrives.airline_id")); %>"/>
   						    </td>
-    						<td colspan="2" id="fNid"><%out.print(result.getString("arrives.flight_number")); %></td>
+    						<td colspan="2">
+    						<input type="text" name="flightNumber" readonly value="<%out.print(result.getString("arrives.flight_number")); %>"/>
+    						</td>
     						<td colspan="3"><%out.print(result.getString("departs.airport_id")); %></td>
    							<td colspan="4"><%out.print(result.getString("dept_time")); %></td>
    							<td colspan="5"><%out.print(result.getString("arrives.airport_id")); %></td>
