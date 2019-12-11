@@ -11,10 +11,10 @@
 </head>
 <body>
 
+<!-- INFO: This is the screen that sends a query for flights. The output is meant to be displayed on the next screen. -->
 	
-	<form method="post" action = SearchFlights.jsp>  						
+	<form method="post" action = DisplayAndSortFlights.jsp>  						
 		<table>
-
 			<tr>
 				<td> 		
 					<select name="trip" class="choose">
