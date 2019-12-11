@@ -73,13 +73,31 @@ try {
 	<input type="submit" value="Return">
 	</form>
 	
-		<form method="post" action="RegisterCustomer.jsp">
+	<form method="post" action="UserReservations.jsp">
+	<table>
+	<tr>
+	<td><br><input type="submit" value="Press here to Look at your Reservations"></td>
+	</tr>
+	</table>
+	</form>
+	
+	<form method="post" action="CustomerSelectFlightNew.jsp">
+	<table>
+	<tr>
+	<td><br><input type="submit" value="Press here to Look for a flight"></td>
+	</tr>
+	</table>
+	</form>
+	
+	
+	
+		<!-- <form method="post" action="RegisterCustomer.jsp">
 	<table>
 	<tr>
 	<td><br>Press here to register user<br></td>
 	</table>
 	<input type="submit" value="Register">
-	</form>
+	</form> -->
 	<%if(isAdmin) { %>
 	<h1> Admin Dashboard </h1>
 	<%-- TODO: Add, edit, delete info for a customer rep --%>
