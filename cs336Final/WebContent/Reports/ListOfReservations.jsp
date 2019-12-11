@@ -39,7 +39,7 @@ try {
 	
 	ResultSet result = departureStmt.executeQuery(query);
 
-	out.print("<h2> Departures </h2>");
+	out.print("<h2> Reservations </h2>");
 	out.print("<table><tr><th>Reservation ID</th></tr>");
 	while (result.next()) {
 		out.print("<tr>");
