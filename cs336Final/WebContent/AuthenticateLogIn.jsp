@@ -37,7 +37,7 @@ try {
 				System.out.println(username + "\t" + password); */
 				
 				if(result.getString(1).equals(username) && result.getString(2).equals(password)) {
-					out.print("Log in Successfull");
+					out.print("Log in Successful");
 					session.setAttribute("uName", username);
 					loginStatus = true;
 					break;
