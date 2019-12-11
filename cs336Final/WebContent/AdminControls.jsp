@@ -18,6 +18,15 @@
      <h2>Here are some Admin Controls: </h2>
 
 
+	<form method="post" action="AdminAdd.jsp">
+		<table>
+			<tr>
+				<td><br>
+				<input type="submit" value="Add Customer or Representative"></td>
+			</tr>
+		</table>
+	</form>
+
 	<form method="post" action="TODO">
 		<table>
 			<tr>
