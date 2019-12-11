@@ -26,7 +26,6 @@
 			</tr>
 		</table>
 	</form>
-	
 
 	<h3> Delete a Customer or Representative </h3>
 	<form method="post" action="AdminDelete.jsp">
