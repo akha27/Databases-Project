@@ -48,7 +48,7 @@ try {
 								" AND arrives.flight_number = Flight.flight_number" +
 								" WHERE arrives.airport_id = var_destination " +
 								" AND departs.airport_id = var_origin " +
-								" sort;
+								" sort";
 			
 			ResultSet result = stmt.executeQuery(getFlights);
 
