@@ -82,6 +82,12 @@ try {
 	</form>
 	<%if(isAdmin) { %>
 	<h1> Admin Dashboard </h1>
+	<%-- TODO: Add, edit, delete info for a customer rep --%>
+	<%-- TODO: obtain a sales report --%>
+	<%-- TODO: produce a list of reservations --%>
+	<%-- TODO: produce a summary listing --%>
+	<%-- TODO: find out which customer generated revenue --%>
+	<%-- TODO: a list of most active flights --%>
 	<h3> A List of All Flights for a Given Airport </h3>
 	<form method="get" action="Reports/AirportFlightList.jsp">
 		<label for="Airport"> Select an Airport </label>
