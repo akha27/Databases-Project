@@ -147,8 +147,8 @@ try {
    							<td colspan="4"><%out.print(result.getString("dept_time")); %></td>
    							<td colspan="5"><%out.print(result.getString("arrives.airport_id")); %></td>
    							<td colspan="6"><%out.print(result.getString("arrv_time")); %></td>
-    						<td colspan="7"><%out.print("2"); %></td>
-   							<td colspan="8"><%out.print("$35"); %></td>
+    						<td colspan="7"><%out.print(result.getString("stops"));%></td>
+   							<td colspan="8"><%out.print("$" + result.getString("price"));%></td>
    							<td colspan="9"><input type="submit" value="RESERVE"></td>
    							
    							<% }

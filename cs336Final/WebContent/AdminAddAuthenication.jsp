@@ -12,82 +12,87 @@
 <body>
 
 <% 
- boolean registrationStatus = false;
+
+String insertPerson = "INSERT INTO Person(user_name, password, person_name)" + "VALUES (?, ?, ?);";
+String insertCustomer = "";
+String insertRepresentative = "";
+
+boolean registrationStatus = false;
+
 try {
-			//Get the database connection
 			ApplicationDB db = new ApplicationDB();	
 			Connection con = db.getConnection();
 			
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
-			
-			String typeUser = request.getParameter("userTypeRegister");
-			
-
-			String insertUser = "";
-			
-			out.print(typeUser);
-
 						
-			if(typeUser == "customer") {
-				insertUser = "INSERT INTO Customer(account_number, user_name, password, person_name)"
-					+ "VALUES (?, ?, ?, ?)";
-			} else if(typeUser =="representative") {
-				insertUser = "INSERT INTO Customer_Rep(user_name, password, person_name)"
-						+ "VALUES (?, ?, ?)";
+			String typeUser = request.getParameter("userTypeRegister");
+						
+			if(typeUser.equals("customer")) {	
+				
+				insertCustomer = "INSERT INTO Customer(account_number, user_name)" + "VALUES (?, ?)";
+				
+			} else if(typeUser.equals("representative")) {
+				
+				insertRepresentative = "INSERT INTO Customer_Rep(user_name)" + "VALUES (?)";
+				
+			} else {
+				out.print("Fuck");
 			}
 			
-
-			
-			//from logIn.jsp
 			String newUsername = request.getParameter("adminAddUsername");
 			String newPassword = request.getParameter("adminAddPassword");
 			String newName = request.getParameter("adminAddFirstName");
 
-			
-			out.print(insertUser);
+			PreparedStatement ps = con.prepareStatement(insertPerson);
+			PreparedStatement ps2 = con.prepareStatement(insertCustomer);
+			PreparedStatement ps3 = con.prepareStatement(insertRepresentative);
 
-
-			PreparedStatement ps = con.prepareStatement(insertUser);
 			
-			
-			if(typeUser == "customer") {
-				ps.setInt(1, 0);
-				ps.setString(2, newUsername);
-				ps.setString(3, newPassword);
-				ps.setString(4, newName);	
-				
-			} else if(typeUser =="representative") {
+		
+			if(typeUser.equals("customer")) {
 				ps.setString(1, newUsername);
 				ps.setString(2, newPassword);
 				ps.setString(3, newName);	
+				ps2.setInt(1,(int) (Math.random() * 10000000));	
+				ps2.setString(2, newUsername);					
+			} else if(typeUser.equals("representative")) {
+				ps.setString(1, newUsername);
+				ps.setString(2, newPassword);
+				ps.setString(3, newName);
+				ps3.setString(1, newUsername);	
 			}
-			
 			
 			
 			registrationStatus = true;
 
 			
-			ps.executeUpdate();
+			if(typeUser.equals("customer")) {
+				ps.executeUpdate();
+				ps2.executeUpdate();
+							
+			} else if(typeUser.equals("representative")) {
+				ps.executeUpdate();
+				ps3.executeUpdate();
+			}
+			
 
+ 
 			con.close();
 			
-			if(typeUser == "customer") {
+			if(typeUser.equals("customer")) {
 				out.print("Registred Customer");
 				
-			} else if(typeUser =="representative") {
+			} else if(typeUser.equals("representative")) {
 				out.print("Registred Representative");
 
 			}
 			
 
-			
-
 		} catch (Exception e) {
 			out.print("Registration UNSUCCESSFUL<br>");
 			out.print(e);
-		}
-	%>
+		} %>
 		
 	<form method="post" action="AdminAdd.jsp">
 	<table>

@@ -9,6 +9,7 @@
 <body>
 
 <h2> Add a user or a customer</h2>
+	<form method="post" action="AdminAddAuthenication.jsp">
 			<table>
 			<tr>
 				<td> 		
@@ -19,6 +20,7 @@
 						
 				</td>
 			</tr>
+			
 			<tr>
 				<td>User-name </td><td><input type="text" name="adminAddUsername"></td>
 			</tr>
@@ -33,9 +35,10 @@
 			
 			</table>
 			
-			<form method="post" action="AdminAddAuthenication.jsp">
 				<input type="submit" value="Add">
 			</form>
+			
+			
 
 </body>
 </html>
