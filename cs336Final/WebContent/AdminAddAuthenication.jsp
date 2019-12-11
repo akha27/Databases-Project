@@ -6,6 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.rightLogout {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+</style>
 <meta charset="UTF-8">
 <title>Admin Add</title>
 </head>
@@ -100,6 +107,20 @@ try {
 	<td><br>Press here to register another user<br></td>
 	</table>
 	<input type="submit" value="Register">
+	</form>
+	
+	<div class= "rightLogout">
+				<form method="post" action="LogOut.jsp">
+				<input type="submit" value="Log out">
+			</form> 
+    	 </div>
+    	 
+    	 <form method="post" action="AdminControls.jsp">
+	<table>
+	<tr>
+	<td><br>Return to Admin Control Panel<br></td>
+	</table>
+	<input type="submit" value="Return">
 	</form>
 
 </body>

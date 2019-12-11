@@ -26,6 +26,15 @@
 			</tr>
 		</table>
 	</form>
+	
+	<form method="post" action="AdminDelete.jsp">
+		<table>
+			<tr>
+				<td><br>
+				<input type="submit" value="Delete Customer or Representative"></td>
+			</tr>
+		</table>
+	</form>
 
 	<form method="post" action="TODO">
 		<table>
