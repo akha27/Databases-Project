@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+    pageEncoding="UTF-8"%>
+        <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@ page import="com.cs336.pkg.ApplicationDB"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Logged In</title>
+<title>Time to REPRESENT</title>
 </head>
 <body>
 
+
 	<%
-		boolean loginStatus = false;
+		boolean repLogInStatus = false;
 	
 		try {
 
@@ -23,11 +24,11 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 
-			String getUser = "SELECT * FROM Person";
+			String getUser = "SELECT * FROM Customer_Rep";
 
 			//from logIn.jsp
-			String username = request.getParameter("usernameCustomer");
-			String password = request.getParameter("passwordCustomer");
+			String username = request.getParameter("usernameRep");
+			String password = request.getParameter("passwordRep");
 
 			ResultSet result = stmt.executeQuery(getUser);
 
@@ -39,15 +40,15 @@
 				if (result.getString(1).equals(username) && result.getString(2).equals(password)) {
 					out.print("Log in Successful");
 					session.setAttribute("uName", username);
-					loginStatus = true;
+					repLogInStatus = true;
 					break;
 				} else {
 					//out.print("Log in Failed<br>");
-					loginStatus = false;
+					repLogInStatus = false;
 				}
 			}
 
-			if (loginStatus == false) {
+			if (repLogInStatus == false) {
 				out.print("<br>Log in Failed");
 			}
 
@@ -59,11 +60,9 @@
 		}
 	%>
 	
-	<%if (loginStatus == true) {  %>
-	
-	<form method="post" action="LogOut.jsp">
-		<input type="submit" value="Log out">
-	</form> 
+
+
+<%if (repLogInStatus == true) {  %>
 
 	<form method="post" action="UserReservations.jsp">
 		<table>
@@ -74,15 +73,45 @@
 		</table>
 	</form>
 
-	<form method="post" action="CustomerSelectFlightNew.jsp">
+	<form method="post" action="TODO">
 		<table>
 			<tr>
 				<td><br>
-				<input type="submit" value="Press here to Look for a flight"></td>
+				<input type="submit" value="MAKE flight reservation for a user"></td>
 			</tr>
 		</table>
 	</form>
 	
+	<form method="post" action="TODO">
+		<table>
+			<tr>
+				<td><br>
+				<input type="submit" value="EDIT flight reservation for a user"></td>
+			</tr>
+		</table>
+	</form>
+	
+	<form method="post" action="TODO">
+		<table>
+			<tr>
+				<td><br>
+				<input type="submit" value="MODIFY flight information"></td>
+			</tr>
+		</table>
+	</form>
+	
+	<form method="post" action="TODO">
+		<table>
+			<tr>
+				<td><br>
+				<input type="submit" value="RETRIEVE waiting list for a flight"></td>
+			</tr>
+		</table>
+	</form>
+	
+	<form method="post" action="LogOut.jsp">
+		<input type="submit" value="Log out">
+	</form> 
 	<%} else {%>
 	
 	<form method="post" action="LogOut.jsp">
@@ -90,5 +119,8 @@
 	</form> 
 	
 	<%} %>
+
+
+
 </body>
 </html>
