@@ -63,6 +63,7 @@
 		</table>
 	</form>
 	
+	<!--  <form method="get" action="Reports/MostActiveFlights.jsp">  -->
 	<form method="post" action="TODO">
 		<table>
 			<tr>
@@ -72,10 +73,12 @@
 		</table>
 	</form>
 	
-	<form method="post" action="TODO">
+	<form method="get" action="Reports/AirportFlightList.jsp">
 		<table>
 			<tr>
 				<td><br>
+				<label for="Airport"> Choose an Airport:</label> <br>
+				<input type="text" name="Airport" />
 				<input type="submit" value="Flights per Airport"></td>
 			</tr>
 		</table>
