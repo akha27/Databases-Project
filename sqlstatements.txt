@@ -1,0 +1,214 @@
+Group#: _______
+I. Create accounts of users; login, logout.
+II. User functionality
+	[] let people search for flights
+		[] one way
+		SELECT *
+		FROM departs JOIN arrives JOIN Flight
+		ON departs.airline_id = arrives.airline_id
+		AND arrives.airline_id = Flight.airline_id
+		AND departs.flight_number = arrives.flight_number
+		AND arrives.flight_number = Flight.flight_number
+		WHERE arrives.airport_id = var_destination
+		AND departs.airport_id = var_origin
+		[] round-trip
+		SELECT *
+		FROM departs JOIN arrives JOIN Flight
+		ON departs.airline_id = arrives.airline_id
+		AND arrives.airline_id = Flight.airline_id
+		AND departs.flight_number = arrives.flight_number
+		AND arrives.flight_number = Flight.flight_number
+		WHERE arrives.airport_id = var_destination
+		AND departs.airport_id = var_origin;
+		
+		SELECT *
+		FROM departs JOIN arrives JOIN Flight
+		ON departs.airline_id = arrives.airline_id
+		AND arrives.airline_id = Flight.airline_id
+		AND departs.flight_number = arrives.flight_number
+		AND arrives.flight_number = Flight.flight_number
+		WHERE arrives.airport_id = var_origin
+		AND departs.airport_id = var_destination
+		[] flexible date/time
+	[] sort flights by different criteria 
+		(price, 
+			SELECT *
+			FROM departs JOIN arrives JOIN Flight
+			ON departs.airline_id = arrives.airline_id
+			AND arrives.airline_id = Flight.airline_id
+			AND departs.flight_number = arrives.flight_number
+			AND arrives.flight_number = Flight.flight_number
+			WHERE arrives.airport_id = var_destination
+			AND departs.airport_id = var_origin
+			ORDER BY price
+		take-off time,
+			SELECT *
+			FROM departs JOIN arrives JOIN Flight
+			ON departs.airline_id = arrives.airline_id
+			AND arrives.airline_id = Flight.airline_id
+			AND departs.flight_number = arrives.flight_number
+			AND arrives.flight_number = Flight.flight_number
+			WHERE arrives.airport_id = var_destination
+			AND departs.airport_id = var_origin
+			ORDER BY dept_time
+		landing time)
+			SELECT *
+			FROM departs JOIN arrives JOIN Flight
+			ON departs.airline_id = arrives.airline_id
+			AND arrives.airline_id = Flight.airline_id
+			AND departs.flight_number = arrives.flight_number
+			AND arrives.flight_number = Flight.flight_number
+			WHERE arrives.airport_id = var_destination
+			AND departs.airport_id = var_origin
+			ORDER BY arrv_time
+	[] filter the list of flights by various criteria 
+		(price,
+		number of stops,
+		airline)
+			SELECT *
+			FROM departs JOIN arrives JOIN Flight
+			ON departs.airline_id = arrives.airline_id
+			AND arrives.airline_id = Flight.airline_id
+			AND departs.flight_number = arrives.flight_number
+			AND arrives.flight_number = Flight.flight_number
+			WHERE arrives.airport_id = var_destination
+			AND departs.airport_id = var_origin
+			AND Flight.airline_id = var_airline_id
+	[] let customers make flight reservations
+			INSERT INTO Reservation (reservation_id, flexibility)
+			VALUES (var_reservation_id, var_flexibility);
+			INSERT INTO reserves (reservation_id, ticket_number)
+			VALUES (var_reservation_id, var_ticket_number);
+			INSERT INTO makes (reservation_id, account_number)
+			VALUES (var_reservation_id, var_account_number);
+	[] let customers cancel their flight reservations (if it is business or first class)
+		SELECT *
+		FROM Economy_Ticket;
+		//if that returns nothing
+		DELETE FROM Subticket
+		WHERE ticket_number = var_ticket_number;
+		DELETE FROM Ticket
+		WHERE ticket_number = var_ticket_number;
+	[] let customer enter the waiting list if the flight is full
+		//Check if flight is full
+		SELECT remaining_cap
+		FROM Flight
+		WHERE airline_id = var_airline_id
+		AND flight_number = var_flight_number
+	
+		INSERT INTO waitlisted(account_number, airline_id, flight_number, queue_number)
+		VALUES (var_account_number, var_airline_id, var_flight_number, 
+			(SELECT MAX(queue_number)
+			 FROM waitlisted
+			 WHERE airline_id = var_airline_id
+			 AND flight_number = var_flight_number) + 1)
+	[] a user should be able to:
+		[] view all the past reservations with their details
+			SELECT *
+			FROM Reservation NATURAL JOIN makes
+			WHERE makes.account_number = var_account_number
+		[] view all the upcoming reservations with their details
+			SELECT *
+			FROM Reservation NATURAL JOIN makes
+			WHERE makes.account_number = var_account_number
+III. Admin/Customer Representative
+	[] Admin (create an admin account ahead of time)
+		[] Add, Edit and Delete information for a customer representative
+			DELETE FROM Customer_Rep
+			WHERE user_name = var_user_name;
+			DELETE FROM Person
+			WHERE user_name = var_user_name;
+			
+			INSERT INTO Person(user_name, password, person_name)
+			VALUES (var_user_name, var_password, var_person_name);
+			INSERT INTO Customer_Rep(user_name)
+			VALUES (var_user_name)
+		   or customer
+		   	DELETE FROM Customer
+			WHERE user_name = var_user_name;
+			DELETE FROM Person
+			WHERE user_name = var_user_name;
+			
+			INSERT INTO Person(user_name, password, person_name)
+			VALUES (var_user_name, var_password, var_person_name);
+			INSERT INTO Customer(user_name, account_number)
+			VALUES (var_user_name, var_account_number)
+		
+		[] Obtain a sales report for a particular month
+		[] Produce a list of reservations by flight number 
+			SELECT reservation_id
+			FROM Reservation NATURAL JOIN reserves NATURAL JOIN Ticket NATURAL JOIN Subticket
+			WHERE Subticket.flight_number = var_flight_number
+			AND airline_id = var_airline_id
+		   or by customer name
+			SELECT reservation_id
+			FROM Reservation NATURAL JOIN makes NATURAL JOIN Customer NATURAL JOIN Person
+			WHERE Person.name = var_name
+		[] Produce a summary listing of revenue generated by a particular flight, airline, or
+		   customer
+		[] Find out which customer generated most total revenue
+		[] Produce a list of most active flights (most tickets sold)
+			SELECT COUNT(*)
+			FROM Ticket
+			GROUP BY airline_id, flight_number
+		[] Produce a list of all flights for a given airport
+			//DEPARTURES
+			SELECT *
+			FROM departs JOIN Flight
+			ON departs.airline_id = Flight.airline_id
+			AND departs.flight_number = Flight.flight_number
+			WHERE departs.airport_id = var_airport
+			//Arrivals
+			SELECT *
+			FROM arrives JOIN Flight
+			ON arrives.airline_id = Flight.airline_id
+			AND arrives.flight_number = Flight.flight_number
+			WHERE arrives.airport_id = var_airport
+			
+	[] Customer representative
+		[] Make flight reservations on behalf of users
+		[] Edit flight reservations for a customer
+		[] Add, Edit, Delete information for
+			[] aircrafts
+				DELETE FROM operated_by
+				WHERE aircraft_id = var_aircraft_id;
+				DELETE FROM owns
+				WHERE aircraft_id = var_aircraft_id;
+				DELETE FROM Aircraft_by
+				WHERE aircraft_id = var_aircraft_id;
+				
+				INSERT INTO Aircraft(aircraft_id)
+				VALUES (var_aircraft_id);
+				INSERT INTO owns(airline_id, aircraft_id)
+				VALUES (var_airline_id, var_aircraft_id);
+				INSERT INTO operated_by(airline_id, aircraft_id)
+				VALUES (var_airline_id, var_aircraft_id);
+				
+			[] airports
+				DELETE FROM Airport
+				WHERE airport_id = var_airport_id;
+				
+				INSERT INTO Airport(airport_id)
+				VALUES (var_airport_id)
+			[] flights
+				DELETE FROM departs
+				WHERE airline_id = var_airline_id
+				AND flight_number = var_flight_number;
+				DELETE FROM arrives
+				WHERE airline_id = var_airline_id
+				AND flight_number = var_flight_number;
+				DELETE FROM Flight
+				WHERE airline_id = var_airline_id
+				AND flight_number = var_flight_number;
+				
+		
+				INSERT INTO Flight(airline_id, flight_number int, domestic_or_intl)
+				VALUES (var_airline_id, var_flight_number, var_domestic_or_intl);
+				INSERT INTO arrives(airline_id, flight_number, airport_id, arrv_time)
+				VALUES (var_airline_id, var_flight_number, var_arrv_airport_id, var_arrv_time);
+				INSERT INTO departs(airline_id, flight_number, airport_id, dept_time)
+				VALUES (var_airline_id, var_flight_number, var_dept_airport_id, var_dept_time);
+		[] retrieve a list of all the passengers who are on the waiting list of a particular flight
+			SELECT account_number
+			FROM waitlisted
+			WHERE flight_number = var_flight_number

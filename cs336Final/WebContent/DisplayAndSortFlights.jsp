@@ -35,7 +35,15 @@ try {
 			Statement stmt = con.createStatement();
 			
 			
-			String getFlights = "SELECT * FROM Flight";
+			String getFlights = "SELECT *" +
+								" FROM departs JOIN arrives JOIN Flight" +
+								" ON departs.airline_id = arrives.airline_id" +
+								" AND arrives.airline_id = Flight.airline_id" +
+								" AND departs.flight_number = arrives.flight_number" +
+								" AND arrives.flight_number = Flight.flight_number" +
+								" WHERE arrives.airport_id = var_destination " +
+								" AND departs.airport_id = var_origin " +
+								" ORDER BY dept_time";
 			
 			ResultSet result = stmt.executeQuery(getFlights);
 
