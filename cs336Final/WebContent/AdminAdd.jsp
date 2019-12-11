@@ -3,6 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.rightLogout {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+</style>
 <meta charset="UTF-8">
 <title>Admin ADD</title>
 </head>
@@ -36,9 +43,22 @@
 			</table>
 			
 				<input type="submit" value="Add">
-			</form>
+			</form>	
 			
 			
+			<div class= "rightLogout">
+				<form method="post" action="LogOut.jsp">
+				<input type="submit" value="Log out">
+			</form> 
+    	 </div>
+    	 
+    	 <form method="post" action="AdminControls.jsp">
+			<table>
+				<tr>
+				<td><br>Return to Admin Control Panel<br></td>
+			</table>
+				<input type="submit" value="Return">
+		</form>
 
 </body>
 </html>
