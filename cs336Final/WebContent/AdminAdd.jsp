@@ -9,33 +9,36 @@
 <body>
 
 <h2> Add a user or a customer</h2>
+	<form method="post" action="AdminAddAuthenication.jsp">
 			<table>
 			<tr>
 				<td> 		
-					<select name="userType" class="choose">
-						<option value="economy">Add customer</option>
-						<option value="business">Add Representative</option>
+					<select name="userTypeRegister" class="choose">
+						<option value="customer">Add customer</option>
+						<option value="representative">Add Representative</option>
 					</select>
 						
 				</td>
 			</tr>
+			
 			<tr>
-				<td>User-name </td><td><input type="text" name="username"></td>
+				<td>User-name </td><td><input type="text" name="adminAddUsername"></td>
 			</tr>
 			
 			<tr>
-				<td>Password </td><td><input type="text" name="password"></td>
+				<td>Password </td><td><input type="text" name="adminAddPassword"></td>
 			</tr> 
 			
 			<tr>
-				<td>First name </td><td><input type="text" name="firstName"></td>
+				<td>First name </td><td><input type="text" name="adminAddFirstName"></td>
 			</tr> 
 			
 			</table>
 			
-			<form method="post" action="TODO">
 				<input type="submit" value="Add">
 			</form>
+			
+			
 
 </body>
 </html>
