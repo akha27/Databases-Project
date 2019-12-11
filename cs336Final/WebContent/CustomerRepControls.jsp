@@ -44,13 +44,13 @@
 		</table>
 	</form>
 	
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="RETRIEVE waiting list for a flight"></td>
-			</tr>
-		</table>
+	<h3> Retrieve Waiting List for a Flight </h3>
+	<form method="get" action="Reports/PassengerWaitingList.jsp">
+		<label for="FlightNumber"> Flight Number </label>
+		<input type="text" name="FlightNumber" /> <br>
+		<label for="Airline"> Airline ID </label>
+		<input type="text" name="Airline" /> <br>
+		<input type="submit" value="Retrieve">
 	</form>
 	
 	<div class= "rightLogout">
