@@ -49,11 +49,7 @@ try {
 			String trip = request.getParameter("trip");
 			String tripClass = request.getParameter("class");
 			String fromCity = request.getParameter("fromCity");
-			String toCity = request.getParameter("toCity");
-		 
-
-
-			
+			String toCity = request.getParameter("toCity");	
 	
 			/* String sort = "";
 			if(request.getParameter("sortPrice").equals("lowToHigh"))
@@ -82,9 +78,7 @@ try {
 			
 			ResultSet result = stmt.executeQuery(getFlights);
 			
-
-			
-			%>s
+			%>
 
 		<h2>Sort it:</h2>
 
@@ -120,7 +114,7 @@ try {
 		<br>
 				
 
-			<form action="" method="POST">
+			<form action="UserTicketReservation.jsp" method="POST">
 					<table style="width:100%">
   						<tr>
    							<th>AIRLINE</th>
@@ -138,11 +132,13 @@ try {
   						result.beforeFirst();
   					
   					while (result.next()) {%>
+  					
+  					
   					 <tbody>
   					
   						<tr>
-  						    <td><%out.print(result.getString("arrives.airline_id")); %></td>
-    						<td colspan="2"><%out.print(result.getString("arrives.flight_number")); %></td>
+  						    <td name ="airlineId"><%out.print(result.getString("arrives.airline_id")); %></td>
+    						<td colspan="2" id="fNid"><%out.print(result.getString("arrives.flight_number")); %></td>
     						<td colspan="3"><%out.print(result.getString("departs.airport_id")); %></td>
    							<td colspan="4"><%out.print(result.getString("dept_time")); %></td>
    							<td colspan="5"><%out.print(result.getString("arrives.airport_id")); %></td>
