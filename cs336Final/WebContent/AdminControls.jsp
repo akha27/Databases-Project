@@ -94,14 +94,9 @@
 		</table>
 	</form>
 	
-	<h3> Get Top-Revenue Listings </h3>
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Top-revenue Customer"></td>
-			</tr>
-		</table>
+	<h3> Get The Top-Revenue Customer </h3>
+	<form method="post" action="Reports/MostRevenueCustomer.jsp">
+		<input type="submit" value="Top-revenue Customer"></td>
 	</form>
 	
 	<h3> Get a Listing of the Most Active Flights</h3>
