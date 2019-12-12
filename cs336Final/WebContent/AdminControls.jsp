@@ -38,7 +38,7 @@
 	</form>
 
 	<h3> Edit a Customer or Representative </h3>
-	<form method="post" action="TODO">
+	<form method="post" action="AdminMod.jsp">
 		<table>
 			<tr>
 				<td><br>
