@@ -86,11 +86,18 @@ try {
 		} catch (Exception e) {
 			registrationStatus = false;
 
-				out.println("FAILED");
-			out.print(e);
-		} %>
+				//out.println("FAILED");
+			//out.print(e);
+		}
+
+			if(registrationStatus == true) {
+				%>
+					<h1>Success</h1>
+				<% 
+			} else {
+			%> <h1>Failed</h1> <%} %>
 		
-	<h1>Success</h1>
+		
 	
 	<div class= "rightLogout">
 				<form method="post" action="LogOut.jsp">
