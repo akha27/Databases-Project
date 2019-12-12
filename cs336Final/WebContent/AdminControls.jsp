@@ -50,16 +50,16 @@
 	<h3> Get a List of Reservations by Flight Number </h3>
 	<form method="get" action="Reports/ListOfReservations.jsp">
 		<label for="FlightNumber"> Flight Number </label>
-		<input type="text" name="FlightNumber" /> <br>
+		<input type="text" name="FlightNumber" required/> <br>
 		<label for="Airline"> Airline ID </label>
-		<input type="text" name="Airline" /> <br>
+		<input type="text" name="Airline" required/> <br>
 		<input type="submit" value="Get a List of Reservations">
 	</form>
 	
 	<h3> Get a List of Reservations by Customer Name </h3>
 	<form method="get" action="Reports/ListOfReservations.jsp">
 		<label for="CustomerName"> Customer Name </label>
-		<input type="text" name="CustomerName" /> <br>
+		<input required type="text" name="CustomerName" /> <br>
 		<input type="submit" value="Get a List of Reservations">
 	</form>
 	
@@ -80,23 +80,23 @@
 			<option value="12"> December </option>
 		</select>
 		<label for="year"> Year </label>
-		<input type="number" name="Year" />
+		<input required type="number" name="Year" />
 		<input type="submit" value="Get a sales report">
 	</form>
 	
 	<h3> Get Revenue Listings by Airline / Flight </h3>
 	<form method="get" action="Reports/RevenueListing.jsp">
 		<label for="Airline"> Airline ID </label>
-		<input type="text" name="Airline" /> <br>
+		<input  required type="text" name="Airline" /> <br>
 		<label for="FlightNumber"> Flight Number (Optional) </label>
-		<input type="text" name="FlightNumber" /> <br>
+		<input required type="text" name="FlightNumber" /> <br>
 		<input type="submit" value="Get a revenue summary">
 	</form>
 	
 	<h3> Get Revenue Listings by Customer </h3>
 	<form method="get" action="Reports/RevenueListing.jsp">
 		<label for="CustomerName"> Customer Name </label>
-		<input type="text" name="CustomerName" /> <br>
+		<input required type="text" name="CustomerName" /> <br>
 		<input type="submit" value="Get a revenue summary">
 	</form>
 	
@@ -118,7 +118,7 @@
 	<h3> Get a Flight Listing for an Airport</h3>
 	<form method="get" action="Reports/AirportFlightList.jsp">
 		<label for="Airport"> Choose an Airport:</label> <br>
-		<input type="text" name="Airport" />
+		<input required type="text" name="Airport" />
 		<input type="submit" value="Flights per Airport">
 	</form>
 	
