@@ -24,7 +24,7 @@ String insertSubticket = "INSERT INTO Subticket(subticket_number, ticket_number,
 String insertReservation = "INSERT INTO Reservation (reservation_id, flexibility) VALUES (?, 0)";
 String insertReserves = "INSERT INTO reserves (reservation_id, ticket_number) VALUES (?, ?);";
 String insertMakes = "INSERT INTO makes (reservation_id, user_name) VALUES (?, ?);";
-//String updateCap = "UPDATE Flight SET remaining_cap = (SELECT f.remaining_cap - 1 FROM Flight AS f WHERE f.flight_number = ? AND f.airline_id = ?) WHERE flight_number = ? AND airline_id = ?";
+String updateCap = "UPDATE Flight SET remaining_cap = remaining_cap - 1 WHERE flight_number = ? AND airline_id = ?;";
 
 boolean registrationStatus = false;
 
@@ -59,11 +59,9 @@ try {
 			PreparedStatement ps5 = con.prepareStatement(insertMakes);
 			ps5.setInt(1, reservationId);
 			ps5.setString(2, "tim");
-			/*PreparedStatement ps6 = con.prepareStatement(updateCap);
+			PreparedStatement ps6 = con.prepareStatement(updateCap);
 			ps6.setInt(1, flightNumber);
 			ps6.setString(2, airlineId);
-			ps6.setInt(3, flightNumber);
-			ps6.setString(4, airlineId);*/
 			
 			
 			registrationStatus = true;
@@ -74,7 +72,7 @@ try {
 			ps3.executeUpdate();
 			ps4.executeUpdate();
 			ps5.executeUpdate();
-			//ps6.executeUpdate();
+			ps6.executeUpdate();
  
 			con.close();			
 
