@@ -8,7 +8,7 @@
 </head>
 <body>
 
-		<%String airlineId = request.getParameter("airlineId3"); %>
+		<%String airlineId = request.getParameter("airlineId"); %>
 		<%String flightNumber = request.getParameter("flightNumber"); %>
 		<%String bookingPrice = request.getParameter("flightPrice"); %>
 		
@@ -19,16 +19,18 @@
 			double bookingFee = 20.0;
 			
 			%>		
+			
+<form method="post" action="PurchaseStatus.jsp">
 		
 	<table>
 		<tr>
 			<td>
- 				Airline ID: <td><%out.print(airlineId);%></td>
+ 				Airline ID: <td><input type="text" name="airlineId" readonly value="<%out.print(airlineId); %>"/></td>
  			<td>
 		</tr>
 		<tr>
 			<td>	
-				Flight Number: <td><%out.print(flightNumber);%></td>
+				Flight Number: <td><input type="text" name="flightNumber" readonly value="<%out.print(flightNumber); %>"/></td>
 			<td>
 		</tr>
 		<tr>
@@ -45,20 +47,17 @@
 		</tr>
 		
 		<tr>
-				<td> 		
+			<td> 		
 					Booking fee: <td>$<%out.print(bookingFee);%></td>
 		</tr>
 		
 		<tr>
 		<td>
- 				Total price: <td>$<div id="totalPrice"></div></td>
- 			<td>
-	
-			
+ 				Total price:$ <td> <input type="text" id="totalPrice" name="totalPrice" readonly value=""/> </td>
+ 		<td>			
 		</table>
 		
 
-		<form method="post" action="PurchaseStatus.jsp">
 			<input type="submit" value="BUY">
 		</form>
 
@@ -69,9 +68,10 @@
 		 		
 		 		myString = myString+20
 		 		
-		 		document.getElementById("totalPrice").innerHTML= (myString)
+		 		document.getElementById("totalPrice").value= (myString)
 		 		
 		 		}
     	</script> 
+
 </body>
 </html>
