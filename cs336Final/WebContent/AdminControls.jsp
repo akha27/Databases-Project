@@ -102,7 +102,7 @@
 	
 	<h3> Get The Top-Revenue Customer </h3>
 	<form method="post" action="Reports/MostRevenueCustomer.jsp">
-		<input type="submit" value="Top-revenue Customer"></td>
+		<input type="submit" value="Top-revenue Customer">
 	</form>
 	
 	<h3> Get a Listing of the Most Active Flights</h3>
