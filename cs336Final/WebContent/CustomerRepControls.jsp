@@ -16,16 +16,27 @@
 <body>
 
      <h2>Here are some Customer Rep Controls: </h2>
-
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="MAKE flight reservation for a user"></td>
-			</tr>
-		</table>
+     
+     <h3> Make Flight Reservations for a Customer </h3>
+	<form method="post" action="CustomerRepMakeReservation.jsp">
+		<label for="airlineId"> Airline ID</label>
+		<input type="text" name="airlineId" > <br>
+		<label for="flightNumber"> Flight Number </label>
+		<input type="text" name="flightNumber" /> <br>
+		<select id="mySelect" name="mySelect" onchange="copy();">
+			<option value="">Select a Class:</option>
+   			<option value="E">Economy</option>
+   			<option value="B>">Business Class</option>
+   			<option value="F" >First Class</option>
+		</select> <br>
+		<label for="totalPrice">Total Price</label>
+		<input type="text" name="totalPrice" /> <br>
+		<label for="uName"> User Name of Customer </label>
+		<input type="text" name="userName" /> <br>
+		<input type="submit" value="Make reservation">
 	</form>
 	
+	<h3> Edit Flight Reservation for a Customer </h3>
 	<form method="post" action="TODO">
 		<table>
 			<tr>
@@ -35,6 +46,7 @@
 		</table>
 	</form>
 	
+	<h3> Modify Flight Information </h3>
 	<form method="post" action="TODO">
 		<table>
 			<tr>
