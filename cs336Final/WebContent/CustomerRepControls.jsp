@@ -56,6 +56,16 @@
 		</table>
 	</form>
 	
+	<h3> Modify Airport Information </h3>
+	<form method="post" action="ModifyAirport.jsp">
+		<table>
+			<tr>
+				<td><br>
+				<input type="submit" value="MODIFY airport information"></td>
+			</tr>
+		</table>
+	</form>
+	
 	<h3> Retrieve Waiting List for a Flight </h3>
 	<form method="get" action="Reports/PassengerWaitingList.jsp">
 		<label for="FlightNumber"> Flight Number </label>
