@@ -25,7 +25,6 @@ try {
 	String customerName = request.getParameter("CustomerName");
 	String query;
 	if(customerName == null) {
-		// TODO: do by airline or flight specifically
 		query = "SELECT Ticket.ticket_number, Ticket.total_fare " +
 					"FROM Ticket NATURAL JOIN Subticket " +
 					"WHERE Subticket.airline_id = '" + airlineId + "'";
@@ -44,7 +43,6 @@ try {
 	
 	ResultSet result = departureStmt.executeQuery(query);
 
-	out.print("<h2> Revenue </h2>");
 	out.print("<table><tr><th> Ticket Number </th> <th>Revenue Generated</th></tr>");
 	while (result.next()) {
 		out.print("<tr><td>");
