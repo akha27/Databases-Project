@@ -26,17 +26,17 @@ try {
 	
 
 	//Create a SQL statement
-	//TODO: query is broken
-	String flights = "SELECT airline_id, flight_number, COUNT(*) " +
-            "FROM Ticket " +
-            "GROUP BY airline_id, flight_number";
+	String flights = "SELECT airline_id, flight_number, COUNT(*) AS num " +
+            "FROM Subticket " +
+            "GROUP BY airline_id, flight_number " +
+            "ORDER BY num";
 
 
 	Statement flightStmt = con.createStatement();
 
 	ResultSet flightsResults = flightStmt.executeQuery(flights);
-	out.print("<h2> Flights </h2>");
-	out.print("<table><tr><th>Airline</th><th>Flight</th><th>Airport</th></tr>");
+	out.print("<h2> Most Active Flights </h2>");
+	out.print("<table><tr><th>Airline</th><th>Flight</th><th>Tickets Sold</th></tr>");
 	while (flightsResults.next()) {
 		out.print("<tr>");
 		printFlightListing(out, flightsResults);
