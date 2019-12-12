@@ -21,7 +21,9 @@
 			%>		
 			
 <form method="post" action="PurchaseStatus.jsp">
-		
+	<h2>User purchasing tickets</h2>
+	<input type="text" name="userName" readonly value="<%out.println((String)session.getAttribute("uName"));%>"/>
+	
 	<table>
 		<tr>
 			<td>
