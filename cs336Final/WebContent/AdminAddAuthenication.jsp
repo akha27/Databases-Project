@@ -44,7 +44,7 @@ try {
 				insertRepresentative = "INSERT INTO Customer_Rep(user_name)" + "VALUES (?)";
 				
 			} else {
-				out.print("Fuck");
+				out.print("Oh No!");
 			}
 			
 			String newUsername = request.getParameter("adminAddUsername");
