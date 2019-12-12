@@ -35,11 +35,11 @@
 		</tr>
 		<tr>
 		<td>	
-			<select id="mySelect" onchange="copy();">
+			<select id="mySelect" name="mySelect" onchange="copy();">
 				<option value="">Select a Class:</option>
-    			<option value="<%out.print(priceEconomy);%>">Economy</option>
-    			<option value="<%out.print(priceBusiness);%>">Business Class</option>
-    			<option value="<%out.print(priceFirst);%>" >First Class</option>
+    			<option value="<%out.print("E" + priceEconomy);%>">Economy</option>
+    			<option value="<%out.print("B" + priceBusiness);%>">Business Class</option>
+    			<option value="<%out.print("F" + priceFirst);%>" >First Class</option>
 		</select>		
 		</td>
 		
@@ -62,9 +62,9 @@
 		</form>
 
 		 <script type="text/javascript"> 
-		 	function copy() { document.getElementById("label").innerHTML=document.getElementById("mySelect").value
+		 	function copy() { document.getElementById("label").innerHTML=document.getElementById("mySelect").value.substring(1)
 		 		
-				var myString = parseFloat(document.getElementById("mySelect").value)
+				var myString = parseFloat(document.getElementById("mySelect").value.substring(1))
 		 		
 		 		myString = myString+20
 		 		
