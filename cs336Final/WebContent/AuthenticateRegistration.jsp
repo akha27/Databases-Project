@@ -25,6 +25,7 @@ try {
 			
 			String insertUser = "INSERT INTO Person(user_name, password, person_name)"
 					+ "VALUES (?, ?, ?)";
+			String insertCustomer = "INSERT INTO Customer(user_name, account_number) VALUES(?, ?)";
 			
 			//from logIn.jsp
 			String newUsername = request.getParameter("registerUsername");
@@ -32,15 +33,19 @@ try {
 						
 		
 			PreparedStatement ps = con.prepareStatement(insertUser);
+			PreparedStatement ps2 = con.prepareStatement(insertCustomer);
 			
 			ps.setString(1, newUsername);
 			ps.setString(2, newPassword);
 			ps.setString(3, "test");
+			ps2.setString(1, newUsername);
+			ps2.setInt(2, (int)(Math.random() * 1000000));
 			
 			registrationStatus = true;
 
 			
 			ps.executeUpdate();
+			ps2.executeUpdate();
 
 			con.close();
 			
