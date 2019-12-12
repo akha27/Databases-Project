@@ -84,14 +84,20 @@
 		<input type="submit" value="Get a sales report">
 	</form>
 	
-	<h3> Get Revenue Listings </h3>
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Generate revenue listings"></td>
-			</tr>
-		</table>
+	<h3> Get Revenue Listings by Airline / Flight </h3>
+	<form method="get" action="Reports/RevenueListing.jsp">
+		<label for="Airline"> Airline ID </label>
+		<input type="text" name="Airline" /> <br>
+		<label for="FlightNumber"> Flight Number (Optional) </label>
+		<input type="text" name="FlightNumber" /> <br>
+		<input type="submit" value="Get a revenue summary">
+	</form>
+	
+	<h3> Get Revenue Listings by Customer </h3>
+	<form method="get" action="Reports/RevenueListing.jsp">
+		<label for="CustomerName"> Customer Name </label>
+		<input type="text" name="CustomerName" /> <br>
+		<input type="submit" value="Get a revenue summary">
 	</form>
 	
 	<h3> Get The Top-Revenue Customer </h3>

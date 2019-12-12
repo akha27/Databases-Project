@@ -33,9 +33,9 @@ try {
 	out.print("<h2> Passengers </h2>");
 	out.print("<table><tr><th>Account Number</th></tr>");
 	while (result.next()) {
-		out.print("<tr>");
+		out.print("<tr><td>");
 		out.print(result.getInt(1));
-		out.print("</tr>");
+		out.print("</td></tr>");
 	}
 	out.print("</table>");
 } catch (Exception e) {
