@@ -8,30 +8,31 @@
 </head>
 <body>
 
-		<%String airlineId = request.getParameter("airlineId3"); %>
+		<%String airlineId = request.getParameter("airlineId"); %>
 		<%String flightNumber = request.getParameter("flightNumber"); %>
 			
 
 
-
-	<table>
-		<tr>
- 			<td><%out.print(airlineId); %></td>
-		</tr>
-		<tr>
-		<td>	
-			<%out.print(flightNumber); %>
-		</td>
-		</tr>
-		<tr>
-		<td>	
-			Price: $40
-		</td>
-		</tr>
-		</table>
-		
 		<form method="post" action="PurchaseStatus.jsp">
+			<table>
+				<tr>
+ 			 		<td>
+  						<input type="text" name="airlineId" readonly value="<%out.print(airlineId); %>"/>
+  			 		</td>
+    			</tr>
+				<tr>
+					<td colspan="2">
+    					<input type="text" name="flightNumber" readonly value="<%out.print(flightNumber); %>"/>
+    				</td>
+				</tr>
+				<tr>
+					<td>	
+						Price: $40
+					</td>
+				</tr>
+			</table>
 		<input type="submit" value="BUY">
+		</form>
 	</form>
 </body>
 </html>
