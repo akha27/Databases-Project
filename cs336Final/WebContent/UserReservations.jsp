@@ -42,7 +42,7 @@ th, td {
 			Statement stmt = con.createStatement();
 			
 			String uname = (String)session.getAttribute("uName");
-			String reservationRequest = "SELECT Reservation.reservation_id, Flight.airline_id, Flight.flight_number, departs.dept_time, departs.airport_id, arrives.arrv_time, arrives.airport_id, Flight.stops, Flight.price FROM Reservation NATURAL JOIN reserves  NATURAL JOIN makes NATURAL JOIN ((Flight NATURAL JOIN Subticket) JOIN arrives JOIN departs ON arrives.flight_number = Subticket.flight_number AND departs.flight_number = Subticket.flight_number AND arrives.airline_id = Subticket.airline_id AND departs.airline_id = Subticket.airline_id) WHERE user_name = \"" + uname + "\"";
+			String reservationRequest = "SELECT Reservation.reservation_id, Flight.airline_id, Flight.flight_number, departs.dept_time, departs.airport_id, arrives.arrv_time, arrives.airport_id, Flight.stops, Flight.price, Subticket.class FROM Reservation NATURAL JOIN reserves  NATURAL JOIN makes NATURAL JOIN ((Flight NATURAL JOIN Subticket) JOIN arrives JOIN departs ON arrives.flight_number = Subticket.flight_number AND departs.flight_number = Subticket.flight_number AND arrives.airline_id = Subticket.airline_id AND departs.airline_id = Subticket.airline_id) WHERE user_name = \"" + uname + "\"";
 			
 			ResultSet result = stmt.executeQuery(reservationRequest);
 			%>
@@ -83,7 +83,9 @@ th, td {
    								<td colspan="9">
        								<input type="text" name="flightPrice" readonly value="<%out.print(result.getString("price")); %>"/>			
    								</td>
-   							<td colspan="10"><input type="submit" value="cancel"></td>
+   							<% if(!result.getString("Subticket.class").equals("E")) {%>
+   								<td colspan="10"><input type="submit" value="cancel"></td>
+   							<% } %>
    							
    							<% }
   					}
