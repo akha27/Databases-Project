@@ -19,15 +19,15 @@
 	<form method="post" action="AdminModAuthentication.jsp">
 			<table>
 			<tr>
-				<td>User-name </td><td><input type="text" name="adminModUsername"></td>
+				<td>User-name </td><td><input required type="text" name="adminModUsername"></td>
 			</tr>
 			
 			<tr>
-				<td>Password </td><td><input type="text" name="adminModPassword"></td>
+				<td>Password </td><td><input required type="text" name="adminModPassword"></td>
 			</tr> 
 			
 			<tr>
-				<td>First name </td><td><input type="text" name="adminModFirstName"></td>
+				<td>First name </td><td><input required type="text" name="adminModFirstName"></td>
 			</tr> 
 			
 			</table>
