@@ -29,7 +29,7 @@
 			</tr>
 			
 			<tr>
-				<td>User-name </td><td><input type="text" name="adminDeleteUsername"></td>
+				<td>User-name </td><td><input required type="text" name="adminDeleteUsername"></td>
 			</tr>
 			
 			</table>
