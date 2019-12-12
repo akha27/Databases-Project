@@ -43,7 +43,7 @@ try {
 				deleteRepresentative = "DELETE FROM Customer_Rep WHERE user_name = (?)";
 				
 			} else {
-				out.print("Fuck");
+				out.print("Oh No!");
 			}
 			
 			String deleteUsername = request.getParameter("adminDeleteUsername");
