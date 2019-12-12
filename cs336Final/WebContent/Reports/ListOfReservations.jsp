@@ -42,9 +42,9 @@ try {
 	out.print("<h2> Reservations </h2>");
 	out.print("<table><tr><th>Reservation ID</th></tr>");
 	while (result.next()) {
-		out.print("<tr>");
+		out.print("<tr><td>");
 		out.print(result.getInt(1));
-		out.print("</tr>");
+		out.print("</td></tr>");
 	}
 	out.print("</table>");
 } catch (Exception e) {
