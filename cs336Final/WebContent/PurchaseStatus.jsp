@@ -41,8 +41,8 @@ try {
 			int ticketNumber = (int)(Math.random() * 1000000);
 			int subticketNumber = (int)(Math.random() * 1000000);
 			int reservationId = (int)(Math.random() * 1000000);			
-			String uname = (String)session.getAttribute("uName");
-						
+			String uname = request.getParameter("userName");
+									
 			PreparedStatement ps1 = con.prepareStatement(insertTicket);
 			ps1.setInt(1, ticketNumber);
 			ps1.setInt(2, price);
