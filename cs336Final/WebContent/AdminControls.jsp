@@ -63,14 +63,25 @@
 		<input type="submit" value="Get a List of Reservations">
 	</form>
 	
-	<h3> Get a Sales Report </h3>
-	<form method="post" action="TODO">
-		<table>
-			<tr>
-				<td><br>
-				<input type="submit" value="Get a sales report"></td>
-			</tr>
-		</table>
+	<h3> Get a Sales Report for a Month</h3>
+	<form method="get" action="Reports/MonthSalesReport.jsp">
+		<select name="Month">
+			<option value="1"> January </option>
+			<option value="2"> February </option>
+			<option value="3"> March </option>
+			<option value="4"> April </option>
+			<option value="5"> May </option>
+			<option value="6"> June </option>
+			<option value="7"> July </option>
+			<option value="8"> August </option>
+			<option value="9"> September </option>
+			<option value="10"> October </option>
+			<option value="11"> November </option>
+			<option value="12"> December </option>
+		</select>
+		<label for="year"> Year </label>
+		<input type="number" name="Year" />
+		<input type="submit" value="Get a sales report">
 	</form>
 	
 	<h3> Get Revenue Listings </h3>
