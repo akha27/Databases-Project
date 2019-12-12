@@ -27,12 +27,6 @@
 <body>
 
 <!-- INFO: This is the screen that sends a query for flights. The output is meant to be displayed on the next screen. -->
-
-<%
-		if ((session.getAttribute("uName") == null)) {
-		out.print("null");
-		}
-	%>
      
 	
 	<form method="post" action = DisplayAndSortFlights.jsp>  						
