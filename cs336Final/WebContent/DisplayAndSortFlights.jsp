@@ -145,7 +145,7 @@ try {
   						     <input type="text"  name="airlineId" class = "colWidth" readonly value="<%out.print(result.getString("arrives.airline_id")); %>"/>
   						    </td>
     						<td colspan="2" class = "colWidth">
-    						<input type="text" class = "colWidth" name="flightNumber" readonly value=" <%out.print(result.getString("arrives.flight_number")); %>"/>
+    						<input type="text" class = "colWidth" name="flightNumber" readonly value="<%out.print(result.getString("arrives.flight_number")); %>"/>
     						</td>
     						<td colspan="3" class = "colWidth"><%out.print(result.getString("departs.airport_id")); %></td>
    							<td colspan="4" class = "colWidth"><%out.print(result.getString("dept_time")); %></td>

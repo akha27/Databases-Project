@@ -12,6 +12,11 @@
   top: 10px;
   right: 10px;
 }
+.rightUserControls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -66,7 +71,6 @@ try {
 			ps6.setString(2, airlineId);
 			
 			
-			registrationStatus = true;
 
 			
 			ps1.executeUpdate();
@@ -75,20 +79,37 @@ try {
 			ps4.executeUpdate();
 			ps5.executeUpdate();
 			ps6.executeUpdate();
- 
+			registrationStatus = true;
+
 			con.close();			
 
 		} catch (Exception e) {
-			out.print(e);
-		} %>
+			registrationStatus = false;
+
+				//out.println("FAILED");
+			//out.print(e);
+		}
+
+			if(registrationStatus == true) {
+				%>
+					<h1>Success</h1>
+				<% 
+			} else {
+			%> <h1>Failed</h1> <%} %>
 		
-	<h1>Success</h1>
+		
 	
 	<div class= "rightLogout">
 				<form method="post" action="LogOut.jsp">
 				<input type="submit" value="Log out">
 			</form> 
     	 </div>
+    	 
+    	  <div class= "rightUserControls">
+		<form method="post" action="UserControls.jsp">
+			<input type="submit" value="Return to User Controls">
+		</form> 
+     </div>
 
 </body>
 </html>

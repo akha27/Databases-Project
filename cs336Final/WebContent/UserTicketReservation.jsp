@@ -37,7 +37,7 @@
 		</tr>
 		<tr>
 		<td>	
-			<select id="mySelect" name="mySelect" onchange="copy();">
+			<select required id="mySelect" name="mySelect" onchange="copy();">
 				<option value="">Select a Class:</option>
     			<option value="<%out.print("E" + priceEconomy);%>">Economy</option>
     			<option value="<%out.print("B" + priceBusiness);%>">Business Class</option>
@@ -55,7 +55,7 @@
 		
 		<tr>
 		<td>
- 				Total price:$ <td> <input type="text" id="totalPrice" name="totalPrice" readonly value=""/> </td>
+ 				Total price:$ <td> <input required type="text" id="totalPrice" name="totalPrice" readonly value=""/> </td>
  		<td>			
 		</table>
 		
